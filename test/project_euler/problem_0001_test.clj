@@ -5,4 +5,5 @@
     [project-euler.problem-0001]))
 
 (fact
-  (multiples-of-three-and-five 1000) => 233168)
+  (multiples-of-three-and-five 10) => 23)
+
