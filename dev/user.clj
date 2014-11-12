@@ -13,8 +13,7 @@
    [clojure.test :as test]
    [clojure.tools.namespace.repl :refer (refresh refresh-all)]
    [clojure.tools.trace :refer (trace-ns untrace-ns)]
-   [project-euler.system :as system]
-   [project-euler.core :as core])
+   [project-euler.system :as system])
   (:use
    [midje.repl]))
 
