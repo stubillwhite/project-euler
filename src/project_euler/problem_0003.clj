@@ -6,8 +6,9 @@
 (defn factors
   ([n]
     (let [ limit   (math/floor (math/sqrt n))
-           factor? (fn [x] (zero? (mod n x))) ]
-      (sort
+           factor? (fn [x] (zero? (mod n x)))
+           dedupe  (fn [x] (sort (into [] (into #{} x)))) ]
+      (dedupe
         (apply concat
           (for [x (range 2 (inc limit)) :when (factor? x)] [x (/ n x)]))))))
 
@@ -21,5 +22,4 @@
 
 (defn calculate-answer
   ([]
-    (apply max (prime-factors 600851475143))))
-
+    (reduce max (prime-factors 600851475143))))

@@ -24,13 +24,9 @@
                   
                   ;; Debugging
                   [org.clojure/tools.trace "0.7.8"]
-
-                  ;; Development
-                  [cider/cider-nrepl "0.7.0"]
-                  
+                 
                   ;; Testing
-                  [midje "1.6.3"]
-                  [lein-midje "3.1.3"] ]
+                  [midje "1.6.3"] ]
   
   :profiles { :dev { :dependencies [ [org.clojure/tools.namespace "0.2.7"] ]
                      :source-paths ["dev"] } })
