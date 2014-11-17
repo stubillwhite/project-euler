@@ -8,6 +8,10 @@
 ;; By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the
 ;; even-valued terms.
 
+;; Solution
+;;
+;; I can't see any way to do this more efficiently than just brute force.
+
 (def fibonacci
   (map first
     (iterate

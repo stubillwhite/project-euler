@@ -6,6 +6,11 @@
 ;;
 ;; Find the largest palindrome made from the product of two 3-digit numbers.
 
+;; Solution
+;;
+;; There are probably some properties of palindromic numbers that would let us cut down the search. Could try creating
+;; palindromes textually then discarding those that are not products of 3-digit numbers, but I expect this is faster.
+
 (defn palindromic-number?
   ([x]
     (= (seq (str x)) (reverse (str x)))))
