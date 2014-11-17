@@ -19,7 +19,6 @@
     (let [ limit (math/floor (math/sqrt x)) ]
       (loop [ i 2 ]
         (cond
-          (even? i)     false
           (> i limit)   true
           (factor? x i) false
           :else         (recur (inc i)))))))
@@ -30,4 +29,3 @@
 (defn calculate-answer
   ([]
     (nth primes 10001)))
-
