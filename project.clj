@@ -26,7 +26,11 @@
                   [org.clojure/tools.trace "0.7.8"]
                  
                   ;; Testing
-                  [midje "1.6.3"] ]
+                  [midje "1.6.3"]
+
+                  ;; Graphing
+                  [org.jfree/jfreechart "1.0.19"]
+                  [org.jfree/jcommon "1.0.23"] ]
   
   :profiles { :dev { :dependencies [ [org.clojure/tools.namespace "0.2.7"] ]
                      :source-paths ["dev"] } })
