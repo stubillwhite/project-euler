@@ -1,8 +1,8 @@
 (defproject project-euler "0.1.0-SNAPSHOT"
 
-  :description "TODO"
+  :description "Clojure solutions to Project Euler problems."
 
-  :url "TODO"
+  :url "https://github.com/stubillwhite/project-euler"
 
   :license { :name "Eclipse Public License"
              :url "http://www.eclipse.org/legal/epl-v10.html" }
