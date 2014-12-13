@@ -45,11 +45,16 @@
       (filter prime?)
       (reduce +))))
 
-;; That's not actually much faster. Charting the execution times of the two attempts shows that there isn't much between
-;; them for this particular range.
-
 ;; TODO Move inputs as a parameter
-(let [inputs (range 1 (* 2 1000 100) 10000)]
-  (display-graph-of-execution-time
-    (data-series "optimised" sum-of-primes-below inputs)
-    (data-series "naive"     sum-of-primes-below inputs)))
+;(let [inputs (range 1 (* 2 1000 100) 10000)]
+;  (display-graph-of-execution-time
+;    (data-series "optimised" sum-of-primes-below inputs)
+;    (data-series "naive"     naive-sum-of-primes-below inputs)))
+
+;; That's much faster (down from six seconds to one second for primes below 200000). Calclating the answer takes about
+;; twenty seconds now instead of over three minutes. I'm not sure whether there are any mathematical optimisations we
+;; can make, though.
+
+(defn calculate-answer
+  ([]
+    (sum-of-primes-below (* 2 1000 1000))))
