@@ -45,11 +45,11 @@
       (filter prime?)
       (reduce +))))
 
-;; TODO Move inputs as a parameter
-;(let [inputs (range 1 (* 2 1000 100) 10000)]
-;  (display-graph-of-execution-time
-;    (data-series "optimised" sum-of-primes-below inputs)
-;    (data-series "naive"     naive-sum-of-primes-below inputs)))
+;; Let's visualise that to see how much faster it makes things.
+(comment display-graph-of-execution-time
+  (range 1 (* 2 1000 100) 10000)
+  (data-series "optimised" sum-of-primes-below)
+  (data-series "naive"     naive-sum-of-primes-below))
 
 ;; That's much faster (down from six seconds to one second for primes below 200000). Calclating the answer takes about
 ;; twenty seconds now instead of over three minutes. I'm not sure whether there are any mathematical optimisations we

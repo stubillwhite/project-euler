@@ -13,19 +13,19 @@
 (timbre/refer-timbre)
 
 (defn graph
-  "Returns a graph with the specified title and labels"
-  ([title x-label y-label & data-series]
+  "Returns a graph with the specified title, labels, inputs, and data series."
+  ([title x-label y-label inputs & data-series]
     { :title       title
       :x-label     x-label
       :y-label     y-label
+      :inputs      inputs
       :data-series [] }))
 
 (defn data-series
   "Returns a data series with the specified label, function, and inputs."
-  ([label f inputs]
+  ([label f]
     { :label  label
-      :f      f
-      :inputs inputs }))
+      :f      f }))
 
 (defn add-data-series
   "Returns a graph with the data-series added."
@@ -70,7 +70,7 @@
 
 (defn- plot-points
   "Plots the points in the data set asynchronously."
-  ([dataset {:keys [label f inputs] :as data-series}]
+  ([inputs dataset {:keys [label f] :as data-series}]
     (let [ series    (XYSeries. label)
            ch        (chan)
            add-point (fn [[x y]] (doto series (.add x y))) ]
@@ -80,9 +80,9 @@
 
 (defn- plot-series
   "Plots all data series in graph to graph-view."
-  ([{:keys [data-series] :as graph} {:keys [dataset] :as graph-view}]
+  ([{:keys [inputs data-series] :as graph} {:keys [dataset] :as graph-view}]
     (for [ds data-series]
-      (plot-points dataset ds))))
+      (plot-points inputs dataset ds))))
 
 (defn display-graph
   "Displays a graph."
@@ -106,8 +106,8 @@
 
 (defn display-graph-of-execution-time
   "Displays a graph of execution time of the specified data series"
-  ([& data-series]
-    (let [ empty-graph (graph "Project Euler chart" "Input" "Execution time (ms)")
+  ([inputs & data-series]
+    (let [ empty-graph (graph "Project Euler chart" "Input" "Execution time (ms)" inputs)
            graph       (reduce (fn [g ds] (add-data-series g ds)) empty-graph data-series)]
       (-> graph
         (decorate-with-execution-time-recorders)
