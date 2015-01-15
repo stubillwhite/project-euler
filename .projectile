@@ -1,2 +1,5 @@
--target
--.lein-repl-history
+-/target
+-/.lein-repl-history
+-/.lein-plugins
+-/lib
+-/.lein-deps-sum
