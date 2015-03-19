@@ -1,4 +1,5 @@
--\.git
--\target
--\.lein-repl-history
--\.nrepl-port
+-/target
+-/.lein-repl-history
+-/.lein-plugins
+-/lib
+-/.lein-deps-sum
