@@ -1,9 +1,7 @@
 (ns project-euler.problem-0004-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0004]))
 
-(fact
-  (reduce max (palindromic-numbers two-digit-products)) => 9009)
+(expect 9009 (reduce max (palindromic-numbers two-digit-products)))
 

@@ -1,8 +1,6 @@
 (ns project-euler.problem-0005-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0005]))
 
-(fact
-  (apply lcm (range 1 11)) => 2520)
+(expect 2520 (apply lcm (range 1 11)))

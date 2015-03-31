@@ -1,8 +1,6 @@
 (ns project-euler.problem-0008-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0008]))
 
-(fact
-  (max-product-of-n-adjacent-digits 4) => 5832)
+(expect 5832 (max-product-of-n-adjacent-digits 4))

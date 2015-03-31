@@ -1,8 +1,6 @@
 (ns project-euler.problem-0007-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0007]))
 
-(fact
-  (nth primes 6) => 13)
+(expect 13 (nth primes 6))

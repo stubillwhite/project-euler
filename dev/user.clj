@@ -15,9 +15,7 @@
     [clojure.tools.trace :refer (trace-ns untrace-ns)]
     [project-euler.system :as system]
     [project-euler.charting :as charting]
-    )
-  (:use
-    [midje.repl]))
+    ))
 
 (def system
   "A Var containing an object representing the application under development."

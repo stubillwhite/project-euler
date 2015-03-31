@@ -1,11 +1,8 @@
 (ns project-euler.problem-0006-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0006]))
 
-(fact
-  (sum-of-squares 10) => 385)
+(expect 385 (sum-of-squares 10))
 
-(fact
-  (square-of-sum 10) => 3025)
+(expect 3025 (square-of-sum 10))

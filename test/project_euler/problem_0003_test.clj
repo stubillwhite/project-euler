@@ -1,11 +1,8 @@
 (ns project-euler.problem-0003-test
   (:use
-    [clojure.test]
-    [midje.sweet]
+    [expectations]
     [project-euler.problem-0003]))
 
-(fact
-  (sort (prime-factors 13195)) => [5 7 13 29])
+(expect [5 7 13 29] (sort (prime-factors 13195)))
 
-(fact
-  (sort (prime-factors 25)) => [5])
+(expect [5] (sort (prime-factors 25)))
