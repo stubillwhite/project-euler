@@ -1,21 +1,31 @@
 (ns user
   "Tools for interactive development with the REPL. This file should
   not be included in a production build of the application."
-  (:require
-    [clojure.java.io :as io]
-    [clojure.java.javadoc :refer (javadoc)]
-    [clojure.pprint :refer (pprint)]
-    [clojure.reflect :refer (reflect)]
-    [clojure.repl :refer (apropos dir doc find-doc pst source)]
-    [clojure.set :as set]
-    [clojure.string :as str]
-    [clojure.stacktrace :refer (print-stack-trace)]
-    [clojure.test :as test]
-    [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-    [clojure.tools.trace :refer (trace-ns untrace-ns)]
-    [project-euler.system :as system]
-    [project-euler.charting :as charting]
-    ))
+  (:require [clojure.java.io :as io]
+            [clojure.java.javadoc :refer [javadoc]]
+            [clojure.pprint :refer [pprint print-table]]
+            [clojure.reflect :refer [reflect]]
+            [clojure.repl :refer [apropos dir doc find-doc pst source]]
+            [clojure.set :as set]
+            [clojure.stacktrace :refer [print-stack-trace]]
+            [clojure.string :as str]
+            [clojure.test :as test]
+            [clojure.tools.namespace.repl :refer [refresh refresh-all]]
+            [clojure.tools.trace :refer [trace-ns untrace-ns]]
+            [project-euler.charting :as charting]
+            [project-euler.system :as system]))
+
+(defn print-methods [x]
+  "Print the methods on x."
+  (print-table
+   (sort-by :name (filter :exception-types (:members (reflect x))))))
+
+(defn print-memory-usage []
+  (let [runtime (Runtime/getRuntime)
+        total   (.totalMemory runtime)
+        free    (.freeMemory runtime)]
+    (println (format"Used %,d bytes, Free %,d bytes, Total %,d bytes"
+                    free (- total free) total))))
 
 (def system
   "A Var containing an object representing the application under development."
