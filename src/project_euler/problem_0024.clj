@@ -69,6 +69,9 @@
    (take-while (complement nil?)
                (iterate next-permutation (sort sequence)))))
 
+(defn nth-permutation [sequence n]
+  (nth (permutations sequence) (dec n)))
+
 (defn answer
   ([]
-   (nth (permutations (range 10)) (dec 1000000))))
+   (nth-permutation (range 10) 1000000)))
