@@ -20,8 +20,6 @@
 ;; 
 ;; What is the value of the first triangle number to have over five hundred divisors?
 
-;; First attempt, let's brute force this
-
 (def triangular-numbers
   (map first (iterate (fn [[num i]] [(+ num i) (inc i)]) [1 2])))
 
