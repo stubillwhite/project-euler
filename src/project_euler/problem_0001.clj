@@ -7,14 +7,11 @@
 ;;
 ;; I can't see any way to do this more efficiently than just brute force.
 
-(defn multiples-of-three-and-five
-  ([limit]
-    (reduce + (distinct
-                (concat
-                  (for [x (range 0 limit 3)] x)
-                  (for [x (range 0 limit 5)] x))))))
+(defn multiples-of-three-and-five [limit]
+  (reduce + (distinct
+             (concat
+              (for [x (range 0 limit 3)] x)
+              (for [x (range 0 limit 5)] x)))))
 
-(defn calculate-answer
-  ([]
-    (multiples-of-three-and-five 1000)))
-
+(defn calculate-answer []
+  (multiples-of-three-and-five 1000))

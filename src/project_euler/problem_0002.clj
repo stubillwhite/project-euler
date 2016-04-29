@@ -14,13 +14,12 @@
 
 (def fibonacci
   (map first
-    (iterate
-      (fn [[x y]] [y (+ x y)])
-      [0 1])))
+       (iterate
+        (fn [[x y]] [y (+ x y)])
+        [0 1])))
 
-(defn calculate-answer
-  ([]
-    (reduce + (for [x fibonacci :when (even? x) :while (< x 4000000)] x))))
+(defn calculate-answer []
+  (reduce + (for [x fibonacci :when (even? x) :while (< x 4000000)] x)))
 
 
 

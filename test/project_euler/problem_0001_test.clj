@@ -1,7 +1,8 @@
 (ns project-euler.problem-0001-test
-  (:use
-    [expectations]
-    [project-euler.problem-0001]))
+  (:require [project-euler.problem-0001 :refer :all]
+            [clojure.test :refer :all]))
 
-(expect 23 (multiples-of-three-and-five 10))
+(deftest example-input-then-example-output
+  (is (= 23 (multiples-of-three-and-five 10))))
+
 

@@ -1,19 +1,22 @@
 (ns user
   "Tools for interactive development with the REPL. This file should
   not be included in a production build of the application."
-  (:require [clojure.java.io :as io]
-            [clojure.java.javadoc :refer [javadoc]]
-            [clojure.pprint :refer [pprint print-table]]
-            [clojure.reflect :refer [reflect]]
-            [clojure.repl :refer [apropos dir doc find-doc pst source]]
-            [clojure.set :as set]
-            [clojure.stacktrace :refer [print-stack-trace]]
-            [clojure.string :as str]
-            [clojure.test :as test]
+  (:require [clojure
+             [pprint :refer [pprint print-table]]
+             [reflect :refer [reflect]]
+             [repl :refer [apropos dir doc find-doc pst source]]
+             [set :as set]
+             [stacktrace :refer [print-stack-trace]]
+             [string :as str]
+             [test :as test]]
+            [clojure.java
+             [io :as io]
+             [javadoc :refer [javadoc]]]
             [clojure.tools.namespace.repl :refer [refresh refresh-all]]
             [clojure.tools.trace :refer [trace-ns untrace-ns]]
-            [project-euler.charting :as charting]
-            [project-euler.system :as system]))
+            [project-euler
+             [charting :as charting]
+             [system :as system]]))
 
 (defn print-methods [x]
   "Print the methods on x."
