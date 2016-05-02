@@ -24,23 +24,18 @@
 ;;
 ;;   (n(n+1)(2n+1)) / 6 
 
-(defn square
-  ([x]
-    (* x x)))
+(defn- square [x]
+  (* x x))
 
-(defn square-of-sum
-  ([n]
-    (square
-      (/ (* n (+ n 1)) 2))))
+(defn square-of-sum [n]
+  (square
+   (/ (* n (+ n 1)) 2)))
 
-(defn sum-of-squares
-  ([n]
-    (/ (* n (+ n 1) (+ (* 2 n) 1)) 6)))
+(defn sum-of-squares [n]
+  (/ (* n (+ n 1) (+ (* 2 n) 1)) 6))
 
-(defn difference
-  ([n]
-    (- (square-of-sum n) (sum-of-squares n))))
+(defn difference [n]
+  (- (square-of-sum n) (sum-of-squares n)))
 
-(defn calculate-answer
-  ([]
-    (difference 100)))
+(defn calculate-answer []
+  (difference 100))

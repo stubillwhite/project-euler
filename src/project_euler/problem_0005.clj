@@ -8,19 +8,17 @@
 ;;
 ;; Just need to find the least common multiple of all the numbers.
 
-(defn gcd
-  ([a b]
-    (if (= b 0)
-      a
-      (recur b (rem a b)))))
+(defn- gcd [a b]
+  (if (= b 0)
+    a
+    (recur b (rem a b))))
 
 (defn lcm
   ([a b]
-    (/ (* a b) (gcd a b)))
+   (/ (* a b) (gcd a b)))
   ([a b & rest]
-    (reduce lcm (lcm a b) rest)))
+   (reduce lcm (lcm a b) rest)))
 
-(defn calculate-answer
-  ([]
-    (apply lcm (range 1 21))))
+(defn calculate-answer []
+  (apply lcm (range 1 21)))
 

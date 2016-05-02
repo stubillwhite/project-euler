@@ -1,8 +1,9 @@
 (ns project-euler.problem-0009-test
-  (:use
-    [expectations]
-    [project-euler.problem-0009]))
+  (:require [project-euler.problem-0009 :refer :all]
+            [clojure.test :refer :all]))
 
-(expect false (pythagorean-triplet? 1 2 3))
+(deftest pythagorean-triplet?-given-non-triplet-then-false
+  (is (= false (pythagorean-triplet? 1 2 3))))
 
-(expect true (pythagorean-triplet? 3 4 5))
+(deftest pythagorean-triplet?-given-triplet-then-true
+  (is (= true (pythagorean-triplet? 3 4 5))))

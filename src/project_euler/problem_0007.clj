@@ -10,22 +10,19 @@
 ;; Clojure has a primes library sequence, but that's cheating rather. This could be faster if we tested primes as factors
 ;; rather than all numbers, but then we'd have to hold onto a array of primes. Do it lazily and stateless.
 
-(defn factor?
-  ([x y]
-    (zero? (rem x y))))
+(defn- factor? [x y]
+  (zero? (rem x y)))
 
-(defn prime?
-  ([x]
-    (let [ limit (math/floor (math/sqrt x)) ]
-      (loop [ i 2 ]
-        (cond
-          (> i limit)   true
-          (factor? x i) false
-          :else         (recur (inc i)))))))
+(defn- prime? [x]
+  (let [ limit (math/floor (math/sqrt x)) ]
+    (loop [ i 2 ]
+      (cond
+        (> i limit)   true
+        (factor? x i) false
+        :else         (recur (inc i))))))
 
 (def primes
   (filter prime? (iterate inc 1)))
 
-(defn calculate-answer
-  ([]
-    (nth primes 10001)))
+(defn calculate-answer []
+  (nth primes 10001))

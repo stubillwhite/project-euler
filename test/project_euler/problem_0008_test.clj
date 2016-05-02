@@ -1,6 +1,9 @@
 (ns project-euler.problem-0008-test
-  (:use
-    [expectations]
-    [project-euler.problem-0008]))
+  (:require [project-euler.problem-0008 :refer :all]
+            [clojure.test :refer :all]))
 
-(expect 5832 (max-product-of-n-adjacent-digits 4))
+(deftest example-input-then-example-output
+  (is (= 5832 (max-product-of-n-adjacent-digits 4))))
+
+
+

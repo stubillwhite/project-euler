@@ -18,8 +18,9 @@
              [charting :as charting]
              [system :as system]]))
 
-(defn print-methods [x]
+(defn print-methods
   "Print the methods on x."
+  [x]
   (print-table
    (sort-by :name (filter :exception-types (:members (reflect x))))))
 

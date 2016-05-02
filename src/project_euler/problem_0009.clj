@@ -14,20 +14,17 @@
 ;; Usual brute-force method first. We can cut down the number of numbers to check because a < b < c and they must sum to
 ;; 1000
 
-(defn square
-  ([x] (* x x)))
+(defn- square [x] (* x x))
 
-(defn pythagorean-triplet?
-  ([a b c]
-    (= (+ (square a) (square b)) (square c))))
+(defn pythagorean-triplet? [a b c]
+  (= (+ (square a) (square b)) (square c)))
 
-(defn calculate-answer
-  ([]
-    (for [ a (range 1 999)
-           b (range a 999)
-           c (range b 999)
-           :when (and (= (+ a b c) 1000) (pythagorean-triplet? a b c))]
-      [a b c])))
+(defn calculate-answer []
+  (for [ a (range 1 999)
+        b (range a 999)
+        c (range b 999)
+        :when (and (= (+ a b c) 1000) (pythagorean-triplet? a b c))]
+    [a b c]))
 
 ;; This takes a while, though.
 ;;

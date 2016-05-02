@@ -1,9 +1,5 @@
 (ns project-euler.problem-0011
-  (:use
-    [project-euler.charting :only [display-graph-of-execution-time graph data-series add-data-series]])
-  (:require
-    [clojure.string :as string]
-    [clojure.math.numeric-tower :as math]))
+  (:require [clojure.string :as string]))
 
 ;; In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
 ;; 
@@ -61,10 +57,9 @@
    20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
    01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48")
 
-(defn- str-to-number-seq
-  ([s]
-    (->> (string/split s #"\W+")
-      (map (fn [x] (Long/valueOf x))))))
+(defn- str-to-number-seq [s]
+  (->> (string/split s #"\W+")
+       (map (fn [x] (Long/valueOf x)))))
 
 (defn- index-as-grid
   ([s cols]
@@ -90,30 +85,27 @@
       (for [ i (range size) ] [0 i])
       (for [ i (range size) ] [i (- i)]))))
 
-(defn- add-coordinates
-  ([[x1 y1] [x2 y2]]
-    [(+ x1 x2) (+ y1 y2)]))
+(defn- add-coordinates [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
 
-(defn- contains-nil?
-  ([coll]
-    (not (every? identity coll))))
+(defn- contains-nil? [coll]
+  (not (every? identity coll)))
 
 (defn extract-values
   "Return the values extracted from grid at point for the specified windows."
-  ([grid point windows]
-    (filter
-      (complement contains-nil?)
-      (for [ window windows ]
-        (map (fn [x] (get grid (add-coordinates point x))) window)))))
+  [grid point windows]
+  (filter
+   (complement contains-nil?)
+   (for [ window windows ]
+     (map (fn [x] (get grid (add-coordinates point x))) window))))
 
 (defn windowed-values
   "Returns a seq of all values from the grid that fit all possible positions of the windows."
-  ([grid windows]
-    (reduce concat (map (fn [x] (extract-values grid x windows)) (keys grid)))))
+  [grid windows]
+  (reduce concat (map (fn [x] (extract-values grid x windows)) (keys grid))))
 
-(defn answer
-  ([]
-    (reduce max
-      (map
-        (fn [x] (apply * x))
-        (windowed-values (create-grid number-seq-str 20) (windows 4))))))
+(defn answer []
+  (reduce max
+          (map
+           (fn [x] (apply * x))
+           (windowed-values (create-grid number-seq-str 20) (windows 4)))))

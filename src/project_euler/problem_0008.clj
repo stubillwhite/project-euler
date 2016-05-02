@@ -1,4 +1,5 @@
-(ns project-euler.problem-0008)
+(ns project-euler.problem-0008
+  (:require [project-euler.utils :refer [def-]]))
 
 ;; The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
 ;; 
@@ -31,7 +32,7 @@
 ;; My first stab at this was to just use Clojure's standard functions and compute each product by pulling chunks off the
 ;; number as a string.
 
-(def number
+(def- number
   (apply str
     "73167176531330624919225119674426574742355349194934"
     "96983520312774506326239578318016984801869478851843"
@@ -54,26 +55,22 @@
     "05886116467109405077541002256983155200055935729725"
     "71636269561882670428252483600823257530420752963450"))
 
-(defn n-adjacent-digits
-  ([n s]
-    (partition n 1 s)))
+(defn- n-adjacent-digits [n s]
+  (partition n 1 s))
 
-(defn product
-  ([chunk]
-    (reduce *
-      (map
-        (fn [x] (Long. (str x)))
-        (vec chunk)))))
+(defn- product [chunk]
+  (reduce *
+          (map
+           (fn [x] (Long. (str x)))
+           (vec chunk))))
 
-(defn max-product-of-n-adjacent-digits
-  ([n]
-    (reduce
-      max
-      (map product (n-adjacent-digits n number)))))
+(defn max-product-of-n-adjacent-digits [n]
+  (reduce
+   max
+   (map product (n-adjacent-digits n number))))
 
-(defn calculate-answer
-  ([]
-    (max-product-of-n-adjacent-digits 13)))
+(defn calculate-answer []
+  (max-product-of-n-adjacent-digits 13))
 
 ;; My colleague pointed out that it's possible to treat this as a sort of windowed calculation across the string, which
 ;; reduces the number of multiplications and is quite pleasing. Care needs to be taken to avoid division by zero, but he

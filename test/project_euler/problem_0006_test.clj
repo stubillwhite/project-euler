@@ -1,8 +1,8 @@
 (ns project-euler.problem-0006-test
-  (:use
-    [expectations]
-    [project-euler.problem-0006]))
+  (:require [project-euler.problem-0006 :refer :all]
+            [clojure.test :refer :all]))
 
-(expect 385 (sum-of-squares 10))
+(deftest example-input-then-example-output
+  (is (= 385 (sum-of-squares 10)))
+  (is (= 3025 (square-of-sum 10))))
 
-(expect 3025 (square-of-sum 10))
