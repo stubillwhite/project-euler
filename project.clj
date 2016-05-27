@@ -20,6 +20,5 @@
                  [org.jfree/jfreechart "1.0.19"]
                  [org.jfree/jcommon "1.0.23"]]
   
-  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.10"]
-                                  [expectations "2.1.4"]]
+  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.10"]]
                    :source-paths ["dev"]}})
