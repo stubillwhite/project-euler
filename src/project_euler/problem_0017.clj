@@ -81,8 +81,3 @@
 
 (defn calculate-answer []
   (reduce + (map number-letter-counts (range 1 1001))))
-
-
-
-
-
