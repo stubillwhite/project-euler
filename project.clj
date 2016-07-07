@@ -10,11 +10,11 @@
   :repl-options {:port 4555}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/core.async "0.2.374"]
+                 [org.clojure/core.async "0.2.382"]
                  [org.clojure/math.numeric-tower "0.0.4"] 
 
                  ;; Logging
-                 [com.taoensso/timbre "4.2.1"]
+                 [com.taoensso/timbre "4.4.0"]
                  [org.clojure/tools.trace "0.7.9"]
                  
                  [org.jfree/jfreechart "1.0.19"]

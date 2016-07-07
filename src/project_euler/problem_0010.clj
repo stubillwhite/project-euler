@@ -13,8 +13,8 @@
 ;; We'll reuse the primes test from problem 0003
 
 (defn- factors [n]
-  (let [ limit   (math/floor (math/sqrt n))
-        factor? (fn [x] (zero? (mod n x))) ]
+  (let [limit   (math/floor (math/sqrt n))
+        factor? (fn [x] (zero? (mod n x)))]
     (into #{}
           (apply concat
                  (for [x (range 2 (inc limit)) :when (factor? x)] [x (/ n x)])))))
@@ -31,8 +31,8 @@
 ;; finding all factors and then testing whether the set is empty.
 
 (defn prime? [n]
-  (let [ limit   (math/floor (math/sqrt n))
-        factor? (fn [x] (zero? (mod n x))) ]
+  (let [limit   (math/floor (math/sqrt n))
+        factor? (fn [x] (zero? (mod n x)))]
     (not-any? factor? (range 2 (inc limit)))))
 
 (defn sum-of-primes-below [n]
